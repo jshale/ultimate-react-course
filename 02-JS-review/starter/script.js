@@ -142,3 +142,39 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+//Destrucuring Arrays
+const book = getBook(1);
+
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+console.log(genres);
+//Rest and spread operators
+const [primaryGenre, secondayGenre, ...otherGenres] = genres;
+primaryGenre;
+secondayGenre;
+otherGenres;
+
+const newGenres = [...genres, "epic fantasy", "high fantasy"];
+newGenres;
+
+const updatedBook = {
+  ...book,
+  //Adding a nee property
+  moviePublicationDate: "2001-12-19",
+  //Overwriting an existing property
+  pages: "1216",
+};
+updatedBook;
+book;
+
+console.log(data[0]);
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+//Async and Await
+
+async function getToDos() {
+  await fetch("https://jsonplaceholder.typicode.com/todos");
+}
